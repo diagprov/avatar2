@@ -84,8 +84,21 @@ class ARM_CORTEX_M3(ARM):
                             ARM_CORTEX_M3.register_write_cb)
 
         pass
+
+
 ARMV7M = ARM_CORTEX_M3
 
+class ARM_CORTEX_M4(ARM_CORTEX_M3):
+    cpu_model = 'cortex-m4'
+
+class ARM_CORTEX_M0(ARM_CORTEX_M3):
+    cpu_model = 'cortex-m0'
+
+class ARM_CORTEX_M0P(ARM_CORTEX_M3):
+    cpu_model = 'cortex-m0plus'
+
+
+ARMV6M = ARM_CORTEX_M0P
 
 class ARMBE(ARM):
     qemu_name = 'armeb'

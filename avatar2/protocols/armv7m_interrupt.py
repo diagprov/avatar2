@@ -33,6 +33,7 @@ class V7MInterruptNotificationAck(Structure):
     ]
 
 
+# TODO: Need to create a version for AVR.
 class ARMV7MInterruptProtocol(Thread):
     """
     This protocol has two purposes: 
