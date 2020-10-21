@@ -74,7 +74,11 @@ class QemuTarget(Target):
                             )
 
         machine = ["-machine", "configurable"]
-        kernel = ["-kernel", self.qemu_config_file]
+        kernel = []
+        if self.cpu_model == "uno":
+            kernel = ["-bios", self.qemu_config_file]
+        else:
+            kernel = ["-kernel", self.qemu_config_file]
         gdb_option = ["-gdb", "tcp::" + str(self.gdb_port)]
         stop_on_startup = ["-S"]
         nographic = ["-nographic"]  # , "-monitor", "/dev/null"]

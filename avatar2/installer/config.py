@@ -11,7 +11,8 @@ OPENOCD = 'openocd'
 QEMU = 'avatar-qemu'
 PANDA = 'avatar-panda'
 GDB_ARM = 'gdb (ARM)'
-GDB_X86 = 'gdb (x86)' 
+GDB_X86 = 'gdb (x86)'
+GDB_AVR = 'gdb (AVR)'
 
 
 TARGETS = OrderedDict(

@@ -97,7 +97,6 @@ class ARM_CORTEX_M0(ARM_CORTEX_M3):
 class ARM_CORTEX_M0P(ARM_CORTEX_M3):
     cpu_model = 'cortex-m0plus'
 
-
 ARMV6M = ARM_CORTEX_M0P
 
 class ARMBE(ARM):
