@@ -18,12 +18,11 @@ class AVR(Architecture):
         'r16': 16,'r17': 17,'r18': 18,'r19': 19,'r20': 20,'r21': 21,'r22': 22,
         'r23': 23,'r24': 24,'r25': 25,'r26': 26,'r27': 27,'r28': 28,'r29': 29,
         'r30': 30,'r31': 31,
-        'pc': 32, 'sp': 33, 'SREG': 34,
-        'RAMPX': 35, 'RAMPY': 36, 'RAMPZ': 37, 'RAMPD': 38, 'EIND': 39
+        'SREG': 32, 'SP': 33, 'PC2': 34, 'pc' : 35
     }
 
 class AVR_UNO(AVR):
-    cpu_model = 'arduino-uno'
+    cpu_model = 'avr5-avr-cpu'
     qemu_name = 'avr'
     gdb_name = 'avr'
     
