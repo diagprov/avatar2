@@ -16,7 +16,7 @@ else:
 
 from avatar2.archs.arm import ARM
 from avatar2.targets import TargetStates
-from avatar2.message import AvatarMessage, UpdateStateMessage, BreakpointHitMessage, SyscallCatchedMessage
+from avatar2.message import AvatarMessage, UpdateStateMessage, BreakpointHitMessage, SigTrapHitMessage, SyscallCatchedMessage
 
 GDB_PROT_DONE = 'done'
 GDB_PROT_CONN = 'connected'
@@ -111,7 +111,7 @@ class GDBResponseListener(Thread):
                     avatar_msg = UpdateStateMessage(
                         self._origin, TargetStates.EXITED)
                 elif payload.get('signal-name') == 'SIGTRAP':
-                    avatar_msg = BreakpointHitMessage(self._origin, -1,
+                    avatar_msg = SigTrapHitMessage(self._origin,
                                                       int(payload['frame']['addr'], 16))
                 else:
                     avatar_msg = UpdateStateMessage(

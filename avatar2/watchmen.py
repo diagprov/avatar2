@@ -6,6 +6,7 @@ class WatchedTypes(object):
     watched_types = [
         'StateTransfer',
         'BreakpointHit',
+        'SigTrapHit',
         'UpdateState',
         'SyscallCatched',
         'RemoteMemoryRead',

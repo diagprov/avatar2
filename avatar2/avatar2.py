@@ -91,6 +91,7 @@ class Avatar(Thread):
         self.message_handlers = { 
             SyscallCatchedMessage: self._handle_syscall_catched_message,
             BreakpointHitMessage: self._handle_breakpoint_hit_message,
+            SigTrapHitMessage: self._handle_sigtrap_hit_message,
             UpdateStateMessage: self._handle_update_state_message,
             RemoteMemoryReadMessage: self._handle_remote_memory_read_message,
             RemoteMemoryWriteMessage: self._handle_remote_memory_write_message
@@ -335,6 +336,11 @@ class Avatar(Thread):
     def _handle_breakpoint_hit_message(self, message):
         self.log.info("Breakpoint hit for Target: %s" % message.origin.name)
         self._handle_update_state_message(message)
+    
+    @watch('SigTrapHit')
+    def _handle_sigtrap_hit_message(self, message):
+        self.log.info("SigTrap hit for Target: %s" % message.origin.name)
+        self._handle_update_state_message(message)
 
     @watch('SyscallCatched')
     def _handle_syscall_catched_message(self, message):
@@ -441,6 +447,7 @@ class AvatarFastQueueProcessor(Thread):
         self.message_handlers = {
             UpdateStateMessage: self._fast_handle_update_state_message,
             BreakpointHitMessage: self._fast_handle_update_state_message,
+            SigTrapHitMessage: self._fast_handle_update_state_message,
             SyscallCatchedMessage: self._fast_handle_update_state_message,
         }
 
